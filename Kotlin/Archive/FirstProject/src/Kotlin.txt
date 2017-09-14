@@ -1,0 +1,30 @@
+
+any variable declared by default is always public
+
+HashCodes
+ArrayList
+HashCodes/ArrayListOf  // mutated can be added if you want to modify Of Codes
+Polymorphism // having same functions with same name with same number of parameters,
+             // but different data type
+
+class Car () { } // () is constructor,
+constructor ( int i =1 , int p = 2) { /*init*/} : this(type /* pass to type ocnstructor declared on class parameter*/);
+                // constructor can be declared elsewhere in the class
+open inheritance:inheritthis () {}// you can only inherit a class if class to inherit is not final, put open so it can be changed
+override / ovewrite open method if same method name
+
+super // superclass  is the name given to the class that is being inherited from
+
+casting // cast a class as another class
+        // class uses methods from the another class rather than its own unless the method is overriden
+
+interface // group of abstract methods to be implemented, interface cannot be instantiated
+// enum class represent a set of values // helps you put values easily without declaring
+
+// abstract class // this class no one can create install for// for security reasons
+// class UserAdmins<T> (credit:T){} // template, no actual data type, cut can be asigned when called from class// UserAdmin<String>("OK")
+  fun <T> display (process:T){}
+
+  extension // add custom method to an existing api class // fun ArrayList<String>.swap(index1:Int,index2:int){ var temp = this.get(index1); this.set(index1,this.get(index2)); this.set(index2,temp);}
+
+ singleton // if by lazy allow 1 instance only , else return null after first instance // used rather than static
