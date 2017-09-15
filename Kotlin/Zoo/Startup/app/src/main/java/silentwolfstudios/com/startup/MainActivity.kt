@@ -1,6 +1,7 @@
 package silentwolfstudios.com.startup
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -48,6 +49,15 @@ class MainActivity : AppCompatActivity() {
                 myView.tvName.text=animal.name!!;
                 myView.tvDes.text=animal.des!!;
                 myView.ivAnimalImage.setImageResource(animal.image!!);
+                myView.ivAnimalImage.setOnClickListener {
+                    val intent = Intent (context, AnimalInfo::class.java)
+                    intent.putExtra("name", animal.name);
+                    intent.putExtra("des",animal.des);
+                    intent.putExtra("animal",animal.image);
+
+
+                }
+
                 return myView;
 
             }else {
