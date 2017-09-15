@@ -6,4 +6,15 @@
 
 
 LayoutInflater reads an XML in which we describe how we want a UI layout to be. It then creates actual Viewobjects for UI from that XML.
+/*
+            val animal = listofAnimals [p0];
+            var inflator = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
+            var myView = inflator.inflate(R.layout.animal_ticket,null) ; // work with animal_ticket.xml in the code
+                                                                                 // convert animal_ticket to be accessed in code
+            myView.tvName.text=animal.name!!;
+            myView.tvDes.text=animal.des!!;
+            myView.ivAnimalImage.setImageResource(animal.image!!);
+            return myView;
+*/
 
