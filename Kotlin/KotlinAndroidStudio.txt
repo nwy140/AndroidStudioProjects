@@ -1,3 +1,9 @@
     // inner class can access to other properties in the class
 <!--Access Dangerous permissions : https://developer.android.com/guide/topics/permissions/requesting.html-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+
+
+
+LayoutInflater reads an XML in which we describe how we want a UI layout to be. It then creates actual Viewobjects for UI from that XML.
+
