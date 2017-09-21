@@ -66,13 +66,13 @@ class MainActivity : AppCompatActivity() {
 
                 myView.ivAnimalImage.setOnClickListener {
 //                    delete(p0);
-//                      add(p0);
+                      add(p0);
 
-                    val intent =  Intent(context,AnimalInfo::class.java);//Intent takes 2 parameters, current activity which is context, secnd parameter is activity to go to , add ::class.java to take it as a java class
-                    intent.putExtra("name",animal.name!!); // .putextra passes parameters in intent when going to an activity
-                    intent.putExtra("des",animal.des!!);
-                    intent.putExtra("image",animal.image!!);
-                    context!!.startActivity(intent); //start acitivity animalinfo, add !! to prevent error nullsafety
+//                    val intent =  Intent(context,AnimalInfo::class.java);//Intent takes 2 parameters, current activity which is context, secnd parameter is activity to go to , add ::class.java to take it as a java class
+//                    intent.putExtra("name",animal.name!!); // .putextra passes parameters in intent when going to an activity
+//                    intent.putExtra("des",animal.des!!);
+//                    intent.putExtra("image",animal.image!!);
+//                    context!!.startActivity(intent); //start acitivity animalinfo, add !! to prevent error nullsafety
 
                 }
 
@@ -90,13 +90,13 @@ class MainActivity : AppCompatActivity() {
 
                 myView.ivAnimalImage.setOnClickListener {
 //                    delete(p0);
-//                    add(p0);
+                    add(p0);
 
-                    val intent =  Intent(context,AnimalInfo::class.java);//Intent takes 2 parameters, current activity which is context, secnd parameter is activity to go to , add ::class.java to take it as a java class
-                    intent.putExtra("name",animal.name!!); // .putextra passes parameters in intent when going to an activity
-                    intent.putExtra("des",animal.des!!);
-                    intent.putExtra("image",animal.image!!);
-                    context!!.startActivity(intent); //start acitivity animalinfo, add !! to prevent error nullsafety
+//                    val intent =  Intent(context,AnimalInfo::class.java);//Intent takes 2 parameters, current activity which is context, secnd parameter is activity to go to , add ::class.java to take it as a java class
+//                    intent.putExtra("name",animal.name!!); // .putextra passes parameters in intent when going to an activity
+//                    intent.putExtra("des",animal.des!!);
+//                    intent.putExtra("image",animal.image!!);
+//                    context!!.startActivity(intent); //start acitivity animalinfo, add !! to prevent error nullsafety
 
                 }
 

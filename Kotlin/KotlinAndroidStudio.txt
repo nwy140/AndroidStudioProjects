@@ -15,6 +15,24 @@ LayoutInflater reads an XML in which we describe how we want a UI layout to be. 
             myView.tvName.text=animal.name!!;
             myView.tvDes.text=animal.des!!;
             myView.ivAnimalImage.setImageResource(animal.image!!);
-            return myView;
+// intent is used to refer to an activity class of another kotlin file to get in another xml file
+                myView.ivAnimalImage.setOnClickListener {
+                    val intent =  Intent(context,AnimalInfo::class.java);//Intent takes 2 parameters, current activity which is context, secnd parameter is activity to go to , add ::class.java to take it as a java class
+                    intent.putExtra("name",animal.name!!); // .putextra passes parameters in intent when going to an activity
+                    intent.putExtra("des",animal.des!!);
+                    intent.putExtra("image",animal.image!!);
+                    context!!.startActivity(intent); //start acitivity animalinfo, add !! to prevent error nullsafety
+
+                }
+		return myView;
+// in Activity to goto which is Animal Activity class
+        val bundle: Bundle = intent.extras //accepting passing data for intent from main acitivity that changes to animalinfo activity
+        val name = bundle.getString("name"); // bundle acts like a constructor for activity ,
+        val des = bundle.getString("des");
+        val image = bundle.getInt("image"); //get integer because    image id is passed
+        ivAnimalImage.setImageResource(image);
+        tvName.text = name;
+        tvDes.text = des;
+// in the end , when app is run, image is clicked, animalinfo activity xml will pop up on screen with correct image, name and des.
 */
 
