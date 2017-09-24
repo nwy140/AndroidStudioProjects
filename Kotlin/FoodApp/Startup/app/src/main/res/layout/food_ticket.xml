@@ -21,17 +21,17 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/ivFoodImage"
             android:layout_width="50pt"
             android:layout_height="50pt"
             app:srcCompat="@drawable/espresso" />
 
         <TextView
-            android:gravity="center"
+            android:id="@+id/tvName"
 
-            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Coffee"
             android:textSize="24sp" />
     </LinearLayout>
