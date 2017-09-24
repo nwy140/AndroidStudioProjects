@@ -7,6 +7,7 @@ In short ,
 baseadapter is used to load data, especially from an array list. Context is an instance of the class
 Layoutinflater is used to access and modify xml UI
 intent is used to change activity. Bundle passes parameters and acts like a sort of constructor for an activity, but not literally.
+Bundle takes in whatever intent.putextra(stringname, parameter reference);if intent.putextra("ok",food.ok); if abc = bundle.getString("ok") ; then abc = food.ok 
 
 
 LayoutInflater reads an XML in which we describe how we want a UI layout to be. It then creates actual Viewobjects for UI from that XML.
