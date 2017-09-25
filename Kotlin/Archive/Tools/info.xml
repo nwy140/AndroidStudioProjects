@@ -1,0 +1,26 @@
+<name> hussein</name>
+<age> 27 </age>
+<Languages> 
+<items>Android </item>
+<items>IOS </item>
+<items>C# </item>
+<items>Java </item>
+
+</Languages>
+
+<jobs>
+<item>
+<title>developer</title>
+<place>NYC</place>
+
+<item>
+<title>tester</title>
+<place>CA</place>
+
+<item>
+<title>manager</title>
+<place>FL</place>
+
+</item>
+
+ </jobs>

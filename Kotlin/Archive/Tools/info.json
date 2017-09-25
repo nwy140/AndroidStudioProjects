@@ -1,0 +1,14 @@
+{
+	"key":"Value",
+ 	"name":hussein";
+	"age":27,
+	"Languages":["Android","iOS","C#","Java"],
+	"jobs":[
+	{"Place":"NYC","Title":"developer"	},
+	{"Place":"CA","Title":"tester"	},
+	{"Place":"NYC","Title":"Manager"	},
+		]
+
+
+
+}
