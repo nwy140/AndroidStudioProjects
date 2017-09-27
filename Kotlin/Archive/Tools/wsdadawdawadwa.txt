@@ -54,15 +54,14 @@ class MainActivity : AppCompatActivity() {
                 var  json=JSONObject(values[0]);
                 val query=json.getJSONObject("query");
                 val results = query.getJSONObject("results")
-                val channel = results.getJSONObject("channel")
-                val astronomy = channel.getJSONObject("astronomy")
+                val channel = query.getJSONObject("channel")
+                val astronomy = query.getJSONObject("astronomy")
                 var sunrise=astronomy.getString("sunrise")
                 tvSunSetTime.setText("Sunrise time is "+ sunrise)   ; //,settext() and .text = are the same
 
 
-
             }catch (ex:Exception){}
-
+            super.onProgressUpdate(*values)
 
         }
 
