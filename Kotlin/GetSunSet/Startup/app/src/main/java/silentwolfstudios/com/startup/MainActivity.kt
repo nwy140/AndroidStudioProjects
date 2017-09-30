@@ -72,6 +72,12 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    //this is android studio kotlin, where I make my apps,
+    //Unity / Unreal Engine is where I make actual 3d Games
+    //I don't know which ide should I use to show some random codes I typed for a random project I'm working on,
+    //so I ended up picking anrdroid studio
+
+
 
     fun ConvertStreamToString(inputStream:InputStream):String{
 
