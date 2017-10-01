@@ -13,10 +13,10 @@
 
 
     <ListView
-        android:background="@color/gray"
-
+        android:id="@+id/lvNote"
 
 
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/gray" />
 </LinearLayout>

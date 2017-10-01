@@ -9,6 +9,15 @@ Layoutinflater is used to access and modify xml UI
 intent is used to change activity. Bundle passes parameters and acts like a sort of constructor for an activity, but not literally.
 Bundle takes in whatever intent.putextra(stringname, parameter reference);if intent.putextra("ok",food.ok); if abc = bundle.getString("ok") ; then abc = food.ok 
 
+// setup app
+// create inner class to pass parameter using base adapter
+// implement members
+// return unused functions
+// return getCount using size of data arraylist
+// use layout inflater to access and edit layout of ticket
+// whatever in layout ticket = currentelement in arraylist's data
+// create variable = adapter innerclass and pass arratlist
+// make listview.adapter = variable created previously
 
 LayoutInflater reads an XML in which we describe how we want a UI layout to be. It then creates actual Viewobjects for UI from that XML.
 /*
