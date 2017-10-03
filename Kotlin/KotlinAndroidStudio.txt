@@ -50,3 +50,27 @@ LayoutInflater reads an XML in which we describe how we want a UI layout to be. 
 // in the end , when app is run, image is clicked, animalinfo activity xml will pop up on screen with correct image, name and des.
 */
 
+To make an activity become startup activity,
+go to androidmanifest.xml
+copy activity code and paste between activity to be run on startup   
+	<intent-filter>
+
+	<action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+          		</intent-filter>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
