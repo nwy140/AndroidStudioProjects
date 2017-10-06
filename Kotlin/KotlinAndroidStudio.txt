@@ -1,7 +1,7 @@
     // inner class can access to other properties in the class
 <!--Access Dangerous permissions : https://developer.android.com/guide/topics/permissions/requesting.html-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
+<!--if you only update xml, click electricity spark to change, without reruning the app-->
 
 In short , 
 baseadapter is used to load data, especially from an array list. Context is an instance of the class
