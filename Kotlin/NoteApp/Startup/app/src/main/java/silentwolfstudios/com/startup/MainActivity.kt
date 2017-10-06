@@ -1,13 +1,21 @@
 package silentwolfstudios.com.startup
 
+import android.app.SearchManager
+import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.SearchView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.ticket.*
 import kotlinx.android.synthetic.main.ticket.view.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +36,45 @@ class MainActivity : AppCompatActivity() {
         lvNote.adapter = myNotesAdapter
     }
 
+    //when menu is created,  take menu from main_menu.xml
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+         menuInflater.inflate(R.menu.main_menu,menu);
+
+        val sv=menu!!.findItem(R.id.app_bar_search).actionView as SearchView;
+        val sm=getSystemService(Context.SEARCH_SERVICE) as SearchManager;
+        sv.setSearchableInfo(sm.getSearchableInfo(componentName));
+        sv.setOnQueryTextListener(object  : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query:String?): Boolean {
+                Toast.makeText(applicationContext,query,Toast.LENGTH_LONG).show();
+                //TODO:search database
+                return false;
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return false;
+            }
+        //android:actionviewclass = widget  // changed to app:actionviewclass=widget
+
+        } )//209329
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    // when menu is selected
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    if (item!=null) {
+        when (item.itemId) {
+            R.id.addNote -> {
+                //Go to Add page // To change activity, define your intent , then start Activity
+                var intent=Intent(this,AddNotes::class.java);
+                startActivity(intent);
+
+
+            }
+        }
+    }
+        return super.onOptionsItemSelected(item)
+    }
 
     //BaseAdapter used to pass data
     inner class MyNotesAdapter:BaseAdapter{
