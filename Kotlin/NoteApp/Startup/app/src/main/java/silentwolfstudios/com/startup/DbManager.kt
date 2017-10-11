@@ -2,8 +2,10 @@ package silentwolfstudios.com.startup
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.database.sqlite.SQLiteQueryBuilder
 import android.widget.Toast
 
 class DbManager {
@@ -54,5 +56,16 @@ class DbManager {
         val ID=sqlDB!!.insert(dbTable,"",values);
         return ID;
     }
+    //---Create new Query function
+    fun Query(projection:Array<String>,selection:String,selectionArgs:Array<String>,SorOrder:String):Cursor{
+        //projection means number of column,selection means which column to choose,  Cursor looks like table and move through data
+
+        val qb=SQLiteQueryBuilder();
+        qb.tables=dbTable; //table name
+        val cursor=qb.query(sqlDB,projection,selection,selectionArgs,null,null,SorOrder);
+        return cursor
+    }
+    //---Create new Query function---
+
 
 }

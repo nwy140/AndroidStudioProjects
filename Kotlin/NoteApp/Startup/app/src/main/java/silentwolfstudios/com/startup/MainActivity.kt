@@ -26,15 +26,43 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //Add dummy data
-        listNotes.add(Note(1,"Meet Professor", "Cristina, Houin kyouma , el psy congroo  ,IBM 5100,dnawjdbdwawdnawjdbwajdbawhdbwahjbadwhbdawhbdwahbdawhbdaw"))
-        listNotes.add(Note(2,"Meet doctor", "Cristina, Houin kyouma , el psy kongroo  ,IBM 5100,dnawjdbdwawdnawjdbwajdbawhdbwahjbadwhbdawhbdwahbdawhbdaw"))
+//        listNotes.add(Note(1,"Meet Professor", "Cristina, Houin kyouma , el psy congroo  ,IBM 5100,dnawjdbdwawdnawjdbwajdbawhdbwahjbadwhbdawhbdwahbdawhbdaw"))
+//        listNotes.add(Note(2,"Meet doctor", "Cristina, Houin kyouma , el psy kongroo  ,IBM 5100,dnawjdbdwawdnawjdbwajdbawhdbwahjbadwhbdawhbdwahbdawhbdaw"))
         listNotes.add(Note(3,"Meet friend", "Cristina, Houin kyouma , el psy kongroo  , IBM 5100,dnawjdbdwawdnawjdbwajdbawhdbwahjbadwhbdawhbdwahbdawhbdaw"))
 
 
         //adapter
+//        var myNotesAdapter=  MyNotesAdapter(listNotes);
+//        lvNote.adapter = myNotesAdapter
+
+        // LoadQuery // call LoadQuery  fucntion to load Query function from DbManager
+        LoadQuery("%"); //% return anything passed from parameter
+    }
+
+    //---LoadQuery
+    fun LoadQuery(title:String){
+        var dbManager=DbManager(this);
+        val projections= arrayOf("ID","Title","Description")
+        val selectionArgs= arrayOf(title);
+        val cursor=dbManager.Query(projections,"Title like ?",selectionArgs,"Title")
+        listNotes.clear()
+        if(cursor.moveToFirst()) {
+            do{ //get variables from cursor
+                val ID=cursor.getInt(cursor.getColumnIndex("ID"))
+                val Title=cursor.getString(cursor.getColumnIndex("Title"))
+                val Description = cursor.getString(cursor.getColumnIndex("Description"))
+                listNotes.add(Note(ID,Title,Description))
+            }while (cursor.moveToNext())
+        }
         var myNotesAdapter=  MyNotesAdapter(listNotes);
         lvNote.adapter = myNotesAdapter
+
     }
+    //---LoadQuery---
+
+
+
+
 
     //when menu is created,  take menu from main_menu.xml
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -46,7 +74,9 @@ class MainActivity : AppCompatActivity() {
         sv.setOnQueryTextListener(object  : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query:String?): Boolean {
                 Toast.makeText(applicationContext,query,Toast.LENGTH_LONG).show();
-                //TODO:search database
+                //search database
+                LoadQuery("%"+query+"%")
+
                 return false;
             }
 
