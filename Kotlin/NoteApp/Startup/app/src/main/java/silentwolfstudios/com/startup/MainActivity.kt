@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         //Add dummy data
 //        listNotes.add(Note(1,"Meet Professor", "Cristina, Houin kyouma , el psy congroo  ,IBM 5100,dnawjdbdwawdnawjdbwajdbawhdbwahjbadwhbdawhbdwahbdawhbdaw"))
 //        listNotes.add(Note(2,"Meet doctor", "Cristina, Houin kyouma , el psy kongroo  ,IBM 5100,dnawjdbdwawdnawjdbwajdbawhdbwahjbadwhbdawhbdwahbdawhbdaw"))
-        listNotes.add(Note(3,"Meet friend", "Cristina, Houin kyouma , el psy kongroo  , IBM 5100,dnawjdbdwawdnawjdbwajdbawhdbwahjbadwhbdawhbdwahbdawhbdaw"))
+//        listNotes.add(Note(3,"Meet friend", "Cristina, Houin kyouma , el psy kongroo  , IBM 5100,dnawjdbdwawdnawjdbwajdbawhdbwahjbadwhbdawhbdwahbdawhbdaw"))
 
 
         //adapter
