@@ -2,9 +2,13 @@ package silentwolfstudios.com.startup
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.database.sqlite.SQLiteQueryBuilder
+import android.text.Selection
 import android.widget.Toast
+import java.nio.channels.SelectionKey
 
 class DbManager{
 
@@ -14,7 +18,7 @@ class DbManager{
 
     //column
     val colID="ID";
-    val colTitle="title";
+    val colTitle="Title";
     val colDes="Description";
 
     //version
@@ -50,4 +54,13 @@ class DbManager{
         val  ID=sqlDB!!.insert(dbTable,"",values)
         return ID
     }
+    //---Create Query Function
+    fun Query(projecion:Array<String>,selection: String,selectionArgs:Array<String>,sorOrder:String):Cursor{
+        //projection is number of columns, selection is colTitle or colDes selection,
+        val qb=SQLiteQueryBuilder()
+        qb.tables=dbTable;
+        val cursor = qb.query(sqlDB,projecion,selection,selectionArgs,null,null,sorOrder)
+        return cursor
+    }
+    //---Create Query Function---
 }

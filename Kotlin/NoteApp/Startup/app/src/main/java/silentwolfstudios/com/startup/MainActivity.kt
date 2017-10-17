@@ -26,14 +26,40 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //Add dummy data
-        listNotes.add(Note(1,"Meet Professor", "Cristina, Houin kyouma , el psy congroo  ,IBM 5100,dnawjdbdwawdnawjdbwajdbawhdbwahjbadwhbdawhbdwahbdawhbdaw"))
-        listNotes.add(Note(2,"Meet doctor", "Cristina, Houin kyouma , el psy kongroo  ,IBM 5100,dnawjdbdwawdnawjdbwajdbawhdbwahjbadwhbdawhbdwahbdawhbdaw"))
-        listNotes.add(Note(3,"Meet friend", "Cristina, Houin kyouma , el psy kongroo  , IBM 5100,dnawjdbdwawdnawjdbwajdbawhdbwahjbadwhbdawhbdwahbdawhbdaw"))
+//        listNotes.add(Note(1,"Meet Professor", "Cristina, Houin kyouma , el psy congroo  ,IBM 5100,dnawjdbdwawdnawjdbwajdbawhdbwahjbadwhbdawhbdwahbdawhbdaw"))
+//        listNotes.add(Note(2,"Meet doctor", "Cristina, Houin kyouma , el psy kongroo  ,IBM 5100,dnawjdbdwawdnawjdbwajdbawhdbwahjbadwhbdawhbdwahbdawhbdaw"))
+//        listNotes.add(Note(3,"Meet friend", "Cristina, Houin kyouma , el psy kongroo  , IBM 5100,dnawjdbdwawdnawjdbwajdbawhdbwahjbadwhbdawhbdwahbdawhbdaw"))
 
 
         //adapter
-        var myNotesAdapter=  MyNotesAdapter(listNotes);
-        lvNote.adapter = myNotesAdapter
+//        var myNotesAdapter=  MyNotesAdapter(listNotes);
+//        lvNote.adapter = myNotesAdapter
+
+        //Load from DbManager
+        LoadQuery("%");
+    }
+
+    fun LoadQuery(title:String){
+        var dbManager=DbManager(this)
+        val projections= arrayOf("ID","Title","Description") //define colum you want to get instead  of null
+        val selectionArgs= arrayOf("%") //% means return anything passed in function
+        val cursor=dbManager.Query(projections,"Title like ?",selectionArgs,"Title"); //send null in projection to use all the column
+        // eg if hussein search , search for TItle like hussein passed in parameter
+        listNotes.clear();
+        if(cursor.moveToFirst()){
+        //if you have data , please move
+            do {
+                val ID=cursor.getInt(cursor.getColumnIndex("ID"))
+                val Title=cursor.getString(cursor.getColumnIndex("Title"))
+                val Description=cursor.getString(cursor.getColumnIndex("Description"))
+
+            listNotes.add(Note(ID,Title,Description))
+            }while (cursor.moveToNext())
+
+            //send to adapter, to show changes to layout
+            var myNotesAdapter=  MyNotesAdapter(listNotes);
+            lvNote.adapter = myNotesAdapter
+        }
     }
 
     //when menu is created,  take menu from main_menu.xml
@@ -46,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         sv.setOnQueryTextListener(object  : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query:String?): Boolean {
                 Toast.makeText(applicationContext,query,Toast.LENGTH_LONG).show();
-                //TODO:search database
+                LoadQuery("%"+query+"%");//Done:search database
                 return false;
             }
 
