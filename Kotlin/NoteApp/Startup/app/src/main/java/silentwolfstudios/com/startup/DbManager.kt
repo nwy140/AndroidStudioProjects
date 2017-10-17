@@ -63,4 +63,15 @@ class DbManager{
         return cursor
     }
     //---Create Query Function---
+
+    //---Delete sql fuction
+    fun Delete(selection:String,selectionArgs: Array<String>):Int{
+
+        val count=sqlDB!!.delete(dbTable,selection,selectionArgs)
+        return count
+    }
+    //---Delete sql function---
+
+
+
 }

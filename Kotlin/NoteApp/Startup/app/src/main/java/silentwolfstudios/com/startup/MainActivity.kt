@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.ticket.*
 import kotlinx.android.synthetic.main.ticket.view.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             }while (cursor.moveToNext())
 
             //send to adapter, to show changes to layout
-            var myNotesAdapter=  MyNotesAdapter(listNotes);
+            var myNotesAdapter=  MyNotesAdapter(this,  listNotes);
             lvNote.adapter = myNotesAdapter
         }
     }
@@ -104,18 +105,27 @@ class MainActivity : AppCompatActivity() {
 
     //BaseAdapter used to pass data
     inner class MyNotesAdapter:BaseAdapter{
-        constructor(listNotesAdapter:ArrayList<Note>):super(){
+//        var listNotesAdapter=ArrayList<Note>()
+        var context:Context?=null;
+        constructor(context:Context,listNotesAdapter:ArrayList<Note>):super(){
             this.listNotesAdapter=listNotesAdapter;
-
+            this.context=context;
         }
 
         //getView method called getCount() times
         override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
 
             var myView=layoutInflater.inflate(R.layout.ticket,null);
-            var myNode=listNotesAdapter[p0]
-            myView.tvTitle.text = myNode.nodeName;
-            myView.tvDes.text = myNode.nodeDes;
+            var myNote  =listNotesAdapter[p0]
+            myView.tvTitle.text = myNote.nodeName;
+            myView.tvDes.text = myNote.nodeDes;
+            myView.ivDelete.setOnClickListener(View.OnClickListener {
+                var dbManager=DbManager(this.context!!)
+
+                val selectionArgs= arrayOf(myNote.nodeID.toString()) //% means return anything passed in function
+                dbManager.Delete("ID=?",selectionArgs)
+                    LoadQuery("%"); //Reload s
+            })
 
             return myView; // give output for calling later by adapter
 
