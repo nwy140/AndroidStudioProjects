@@ -72,6 +72,12 @@ class DbManager{
     }
     //---Delete sql function---
 
+    //---Update sql notes function
+    fun Update(values: ContentValues,selection: String,selectionArgs: Array<String>):Int{
+        val count=sqlDB!!.update(dbTable,values,selection,selectionArgs   )
+        return count
+    }
+    //---Update sql notes function---
 
 
 }

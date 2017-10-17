@@ -40,6 +40,13 @@ class MainActivity : AppCompatActivity() {
         LoadQuery("%");
     }
 
+    //--Create on resume
+    override fun onResume() { //onResume means when the form comes back again, to the previous layout/activity or when activity finishes I think
+        super.onResume()
+        LoadQuery("%")
+    }
+    //--Create on resume---
+
     fun LoadQuery(title:String){
         var dbManager=DbManager(this)
         val projections= arrayOf("ID","Title","Description") //define colum you want to get instead  of null
@@ -127,6 +134,9 @@ class MainActivity : AppCompatActivity() {
                     LoadQuery("%"); //Reload s
             })
 
+            myView.ivEdit.setOnClickListener(View.OnClickListener {
+                GoToUpdate(myNote)
+            })
             return myView; // give output for calling later by adapter
 
         }
@@ -150,6 +160,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun GoToUpdate(note:Note){
+        //define edit intent and then start activity to start editing
+        var intent=Intent(this,AddNotes::class.java);
+        intent.putExtra("ID",note.nodeID)
+        intent.putExtra("name",note.nodeName)
+        intent.putExtra("des",note.nodeDes)
 
+        startActivity(intent);
+    }
 
 }
