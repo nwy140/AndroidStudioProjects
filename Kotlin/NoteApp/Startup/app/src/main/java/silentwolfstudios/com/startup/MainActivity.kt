@@ -38,14 +38,42 @@ class MainActivity : AppCompatActivity() {
 
         //Load from DbManager
         LoadQuery("%");
+
+
+        //---SHOWING ACTIVITY LIFE CYCLE
+    Toast.makeText(this,"OnCreate",Toast.LENGTH_LONG).show();
     }
+
+
 
     //--Create on resume
     override fun onResume() { //onResume means when the form comes back again, to the previous layout/activity or when activity finishes I think
         super.onResume()
         LoadQuery("%")
+        Toast.makeText(this,"OnResume",Toast.LENGTH_LONG).show();
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Toast.makeText(this,"OnStart",Toast.LENGTH_LONG).show();
+    }
+    override fun onPause() {
+        super.onPause()
+        Toast.makeText(this,"OnPause",Toast.LENGTH_LONG).show();
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Toast.makeText(this,"OnDestroy",Toast.LENGTH_LONG).show();
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Toast.makeText(this,"onRestart",Toast.LENGTH_LONG).show();
     }
     //--Create on resume---
+    //---SHOWING ACTIVITY LIFE CYCLE---
+
 
     fun LoadQuery(title:String){
         var dbManager=DbManager(this)

@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Startup</string>
+    <string name="app_name">My Notes</string>
+
+    <string name="title">enter title</string>
+
+    <string name="des">enter your description</string>
+    <string name="add">Add Note</string>
+
 </resources>
+<!--add ads later-->
