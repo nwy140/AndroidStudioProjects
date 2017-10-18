@@ -3,7 +3,10 @@
 
     <!--Hussein's colors-->
     <color name="white" >#ffffff</color>
-    <color name="gray" >#d5d4d4d4</color>
+    <color name="gray" >#d5d4d4d4</color
+	
+	<!--Nwy's colors-->
+    <color name="greyAwesome">#393939</color>
 
 
     <color name="colorPrimary">#3F51B5</color>
