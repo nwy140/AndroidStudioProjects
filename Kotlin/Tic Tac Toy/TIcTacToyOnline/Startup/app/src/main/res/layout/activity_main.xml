@@ -1,133 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/whitebackground"
-    android:gravity="center"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="silentwolfstudios.com.startup.silentwolfstudios.com.tictactoylocalvsAI.MainActivity">
+    android:background="@color/whitebackground"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
-    <TableRow
-        android:layout_marginBottom="3pt"
-        android:gravity="center"
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <Button
-            android:background="@color/white"
-            android:id="@+id/bu1"
-            android:onClick="buClick"
-
-            android:layout_width="40pt"
-            android:layout_height="40pt"
-            android:layout_marginRight="3pt" />
-
-        <Button
-            android:background="@color/white"
-            android:id="@+id/bu2"
-            android:onClick="buClick"
+    <LinearLayout
+        android:layout_margin="10pt"
 
 
-            android:layout_width="40pt"
-            android:layout_height="40pt"
-            android:layout_marginRight="3pt" />
-
-        <Button
-            android:background="@color/white"
-
-            android:id="@+id/bu3"
-            android:onClick="buClick"
-
-
-            android:layout_width="40pt"
-            android:layout_height="40pt"
-            android:layout_marginRight="3pt" />
-    </TableRow>
-
-    <TableRow
-        android:layout_marginBottom="3pt"
-
-        android:gravity="center"
 
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etEmail"
+
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Other player's email"
+            android:inputType="textPersonName" />
 
         <Button
-            android:background="@color/white"
+            android:id="@+id/buRequest"
 
-            android:id="@+id/bu4"
-            android:onClick="buClick"
+            android:layout_width="wrap_content"
 
-
-            android:layout_width="40pt"
-            android:layout_height="40pt"
-            android:layout_marginRight="3pt" />
-
-        <Button
-            android:background="@color/white"
-
-            android:id="@+id/bu5"
-            android:onClick="buClick"
-
-
-            android:layout_width="40pt"
-            android:layout_height="40pt"
-            android:layout_marginRight="3pt" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3pt"
+            android:layout_weight="1"
+            android:background="@color/blue"
+            android:onClick="buRequestEven"
+            android:text="Request" />
 
         <Button
-            android:background="@color/white"
+            android:id="@+id/buAccept"
 
-            android:id="@+id/bu6"
-            android:onClick="buClick"
+            android:layout_width="wrap_content"
 
 
-            android:layout_width="40pt"
-            android:layout_height="40pt"
-            android:layout_marginRight="3pt" />
-    </TableRow>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3pt"
+            android:layout_weight="1"
+            android:background="@color/green"
+            android:onClick="buAcceptEvent"
+            android:text="Accept" />
 
-    <TableRow
-        android:layout_marginBottom="3pt"
+    </LinearLayout>
 
-        android:gravity="center"
-
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <Button
-            android:background="@color/white"
-
-            android:id="@+id/bu7"
-            android:onClick="buClick"
+        android:layout_height="match_parent"
 
 
-            android:layout_width="40pt"
-            android:layout_height="40pt"
-            android:layout_marginRight="3pt" />
+        android:background="@color/whitebackground"
+        android:gravity="center">
 
-        <Button
-            android:background="@color/white"
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-            android:id="@+id/bu8"
-            android:onClick="buClick"
+            android:layout_marginBottom="3pt"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/bu1"
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+
+                android:layout_marginRight="3pt"
+                android:background="@color/white"
+                android:onClick="buClick" />
+
+            <Button
+                android:id="@+id/bu2"
+                android:layout_width="40pt"
+                android:layout_height="40pt"
 
 
-            android:layout_width="40pt"
-            android:layout_height="40pt"
-            android:layout_marginRight="3pt" />
+                android:layout_marginRight="3pt"
+                android:background="@color/white"
+                android:onClick="buClick" />
 
-        <Button
-            android:background="@color/white"
+            <Button
+                android:id="@+id/bu3"
 
-            android:id="@+id/bu9"
-            android:onClick="buClick"
+                android:layout_width="40pt"
+                android:layout_height="40pt"
 
 
-            android:layout_width="40pt"
-            android:layout_height="40pt"
-            android:layout_marginRight="3pt" />
+                android:layout_marginRight="3pt"
+                android:background="@color/white"
+                android:onClick="buClick" />
+        </TableRow>
 
-    </TableRow>
-</TableLayout>
+        <TableRow
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+
+            android:layout_marginBottom="3pt"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/bu4"
+
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+
+
+                android:layout_marginRight="3pt"
+                android:background="@color/white"
+                android:onClick="buClick" />
+
+            <Button
+                android:id="@+id/bu5"
+
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+
+
+                android:layout_marginRight="3pt"
+                android:background="@color/white"
+                android:onClick="buClick" />
+
+            <Button
+                android:id="@+id/bu6"
+
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+
+
+                android:layout_marginRight="3pt"
+                android:background="@color/white"
+                android:onClick="buClick" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+
+            android:layout_marginBottom="3pt"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/bu7"
+
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+
+
+                android:layout_marginRight="3pt"
+                android:background="@color/white"
+                android:onClick="buClick" />
+
+            <Button
+                android:id="@+id/bu8"
+
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+
+
+                android:layout_marginRight="3pt"
+                android:background="@color/white"
+                android:onClick="buClick" />
+
+            <Button
+                android:id="@+id/bu9"
+
+                android:layout_width="40pt"
+                android:layout_height="40pt"
+
+
+                android:layout_marginRight="3pt"
+                android:background="@color/white"
+                android:onClick="buClick" />
+
+        </TableRow>
+
+
+    </TableLayout>
+
+
+</LinearLayout>
