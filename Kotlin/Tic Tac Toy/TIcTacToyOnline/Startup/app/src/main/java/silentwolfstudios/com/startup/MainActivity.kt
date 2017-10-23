@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
         myRef.child("PlayerOnline").child(sessionID).child(cellID.toString()).setValue(myEmail);
 //        Toast.makeText(this, "ID:" + cellID, Toast.LENGTH_LONG).show()
-        Toast.makeText(this,"buSelected"+buSelected.isEnabled,Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"buSelected:"+buSelected.isEnabled + "ActivePlayer:"+ActivePlayer,Toast.LENGTH_LONG).show();
 
 
 //        PlayGame(cellID,buSelected);
@@ -72,20 +72,18 @@ class MainActivity : AppCompatActivity() {
 
     var player1=ArrayList<Int>()
     var player2=ArrayList<Int>()
-    var ActivePlayer=1
+    var ActivePlayer:Int?=null;
 
     fun PlayGame(cellID:Int,buSelected:Button){
         if (ActivePlayer==1){
             buSelected.text="X";
             buSelected.setBackgroundResource(R.color.blue)
             player1.add(cellID)
-            ActivePlayer=2
 //            AutoPlay()
         } else {
             buSelected.text="O";
             buSelected.setBackgroundResource(R.color.darkgreen)
             player2.add(cellID)
-            ActivePlayer=1
         }
 
 
@@ -203,17 +201,17 @@ class MainActivity : AppCompatActivity() {
     fun buRequestEvent(view: android.view.View){
         var userDemail=etEmail.text.toString();
         myRef.child("Users").child(SplitString(userDemail)).child("Request").push().setValue(myEmail) //push means create node with random ID
-
-        PlayerOnline(SplitString(myEmail!!)+SplitString(userDemail) ); //hackerleaker
         PlayerSymbol="X"
+        PlayerOnline(SplitString(myEmail!!)+SplitString(userDemail) ); //hackerleaker
+
     }
 
     fun buAcceptEvent(view: android.view.View){
         var userDemail=etEmail.text.toString();
         myRef.child("Users").child(SplitString(userDemail)).child("Request").push().setValue(myEmail) //push means create node with random ID
-
-        PlayerOnline(SplitString(userDemail )+SplitString(myEmail!!) ); //husseinleaker
         PlayerSymbol="O"
+        PlayerOnline(SplitString(userDemail )+SplitString(myEmail!!) ); //husseinleaker
+
     }
 
     var sessionID:String?=null;
