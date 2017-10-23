@@ -41,7 +41,8 @@ class Login : AppCompatActivity() {
 
                     //save in database
                     if(currentUser!=null){
-                        myRef.child("Users").child(SplitString(currentUser.email.toString())).setValue(currentUser.uid) // you can't load email as name because Firebase can't load '@' char in their database
+//                        myRef.child("Users").child(SplitString(currentUser.email.toString())).setValue(currentUser.uid) // you can't load email as name because Firebase can't load '@' char in their database
+                        myRef.child("Users").child(SplitString(currentUser.email.toString())).child("Request").setValue(currentUser.uid) // you can't load email as name because Firebase can't load '@' char in their database
 
                     }
 
@@ -68,7 +69,7 @@ class Login : AppCompatActivity() {
 
             var intent=Intent(this, MainActivity::class.java);
             intent.putExtra("email",currentUser.email);
-            intent.putExtra("email",currentUser.uid);
+            intent.putExtra("uid",currentUser.uid);
             startActivity(intent)
         }
 

@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.database.FirebaseDatabase
 
 import kotlinx.android.synthetic.main.activity_main.*
 import silentwolfstudios.com.startup.R
@@ -13,7 +14,11 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    //database instance
+    private var database= FirebaseDatabase.getInstance();
+    private var myRef=database.reference;
 
+    var myEmail:String?=null;
 private var mFirebaseAnalytics:FirebaseAnalytics?=null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +27,9 @@ private var mFirebaseAnalytics:FirebaseAnalytics?=null;
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-
+        var b:Bundle=intent.extras;
+        myEmail=b.getString("email") // will get email, then send it to extras, and set the email to login email
+                                            // so whenever you click request, you will add your email to database
     }
 var winner=-1;
      fun buClick(view: View) {  // do not use protected ,it causes crash
@@ -183,13 +190,15 @@ var winner=-1;
         PlayGame(cellID,buSelect);
     }
 
-    protected fun buRequestEvent(view: View){
-        var userDemail=etEmail.text;
+    fun buRequestEvent(view: android.view.View){
+        var userDemail=etEmail.text.toString();
+        myRef.child("Users").child(userDemail).child("Request").push().setValue(myEmail) //push means create node with random ID
 
     }
 
-    protected fun buAcceptEvent(view: View){
-        var userDemail=etEmail.text;
+    fun buAcceptEvent(view: android.view.View){
+        var userDemail=etEmail.text.toString();
+
 
     }
 

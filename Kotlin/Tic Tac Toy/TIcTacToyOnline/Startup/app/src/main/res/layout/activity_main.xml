@@ -39,7 +39,7 @@
             android:layout_marginLeft="3pt"
             android:layout_weight="1"
             android:background="@color/blue"
-            android:onClick="buRequestEven"
+            android:onClick="buRequestEvent"
             android:text="Request" />
 
         <Button
