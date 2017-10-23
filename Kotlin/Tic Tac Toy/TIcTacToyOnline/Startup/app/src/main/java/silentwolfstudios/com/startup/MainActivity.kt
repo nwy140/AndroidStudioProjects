@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     private var myRef=database.reference;
 
     var myEmail:String?=null;
-private var mFirebaseAnalytics:FirebaseAnalytics?=null;
+    private var mFirebaseAnalytics:FirebaseAnalytics?=null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,16 +34,16 @@ private var mFirebaseAnalytics:FirebaseAnalytics?=null;
 
         var b:Bundle=intent.extras;
         myEmail=b.getString("email") // will get email, then send it to extras, and set the email to login email
-                                            // so whenever you click request, you will add your email to database
+        // so whenever you click request, you will add your email to database
         IncomingCalls();
     }
-var winner=-1;
-     fun buClick(view: View) {  // do not use protected ,it causes crash
+    var winner=-1;
+    fun buClick(view: View) {  // do not use protected ,it causes crash
         var buSelected = view as Button;
         var cellID = 0;
 
 //stop gameplay
-         if (winner==1 || winner==2){player1.clear(); player2.clear();return;}
+        if (winner==1 || winner==2){player1.clear(); player2.clear();return;}
 //stop gameplay
 
 
@@ -61,9 +61,13 @@ var winner=-1;
 
 
         }
-//        Toast.makeText(this, "ID:" + cellID, Toast.LENGTH_LONG).show()
 
-        PlayGame(cellID,buSelected);
+        myRef.child("PlayerOnline").child(sessionID).child(cellID.toString()).setValue(myEmail);
+//        Toast.makeText(this, "ID:" + cellID, Toast.LENGTH_LONG).show()
+        Toast.makeText(this,"buSelected"+buSelected.isEnabled,Toast.LENGTH_LONG).show();
+
+
+//        PlayGame(cellID,buSelected);
     }
 
     var player1=ArrayList<Int>()
@@ -76,7 +80,7 @@ var winner=-1;
             buSelected.setBackgroundResource(R.color.blue)
             player1.add(cellID)
             ActivePlayer=2
-            AutoPlay()
+//            AutoPlay()
         } else {
             buSelected.text="O";
             buSelected.setBackgroundResource(R.color.darkgreen)
@@ -85,7 +89,7 @@ var winner=-1;
         }
 
 
-        buSelected.isEnabled=false;
+//        buSelected.isEnabled=false;
         CheckWinner();
     }
 
@@ -166,18 +170,18 @@ var winner=-1;
 
     }
 
-    fun AutoPlay(){
+    fun AutoPlay(cellID: Int){
         var emptyCell=ArrayList<Int>()
         for ( cellID in 1..9  ){
             if (!(player1.contains(cellID) || player2.contains(cellID))){
                 emptyCell.add(cellID);
             }
         }
-        var r=Random();
-
-        val randIndex=r.nextInt(emptyCell.size-0)+0;
-
-        val cellID= emptyCell.get(randIndex);
+//        var r=Random();
+//
+//        val randIndex=r.nextInt(emptyCell.size-0)+0;
+//
+////        val cellID= emptyCell.get(randIndex);
         var buSelect:Button?
         when (cellID){
             1-> buSelect=bu1;
@@ -200,12 +204,52 @@ var winner=-1;
         var userDemail=etEmail.text.toString();
         myRef.child("Users").child(SplitString(userDemail)).child("Request").push().setValue(myEmail) //push means create node with random ID
 
+        PlayerOnline(SplitString(myEmail!!)+SplitString(userDemail) ); //hackerleaker
+        PlayerSymbol="X"
     }
 
     fun buAcceptEvent(view: android.view.View){
         var userDemail=etEmail.text.toString();
         myRef.child("Users").child(SplitString(userDemail)).child("Request").push().setValue(myEmail) //push means create node with random ID
 
+        PlayerOnline(SplitString(userDemail )+SplitString(myEmail!!) ); //husseinleaker
+        PlayerSymbol="O"
+    }
+
+    var sessionID:String?=null;
+    var PlayerSymbol:String?=null;
+    fun PlayerOnline(sessionID:String){
+        this.sessionID=sessionID;
+
+        myRef.removeValue()
+        myRef.child("PlayerOnline").child(sessionID)
+                .addValueEventListener(object :ValueEventListener{
+                    override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                        try{
+                            player1.clear()
+                            player2.clear()
+                            val td=dataSnapshot!!.value as HashMap<String,Any>
+                            if (td!=null){
+                                var value:String
+                                for (key in td.keys){
+                                    value=td[key] as String
+
+                                    if (value!=myEmail){
+                                        ActivePlayer=if(PlayerSymbol==="X") 1 else 2
+                                    } else {
+                                        //this is me
+                                        ActivePlayer=if(PlayerSymbol==="X") 2 else 1
+                                    }
+                                    AutoPlay(key.toInt())
+                                }
+                            }
+                        }catch (ex:Exception){}
+                    }
+
+                    override fun onCancelled(p0: DatabaseError?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+                })
     }
 
     fun IncomingCalls(){
