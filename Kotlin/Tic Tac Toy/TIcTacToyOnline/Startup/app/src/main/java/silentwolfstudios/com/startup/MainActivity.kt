@@ -249,7 +249,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 })
     }
-
+    var number = 0 ; //for Notifications.notifying
     fun IncomingCalls(){
         myRef.child("Users").child(SplitString(myEmail!!)).child("Request")
                 .addValueEventListener(object :ValueEventListener{
@@ -261,6 +261,13 @@ class MainActivity : AppCompatActivity() {
                                 for (key in td.keys){
                                     value=td[key] as String
                                     etEmail.setText(value)
+
+
+                                    val notifyme=Notifications();
+                                    notifyme.Notify(applicationContext,value+"wants to play tic tac toy",number)
+                                    number++;
+
+
 
                                     myRef.child("Users").child(SplitString(myEmail.toString())).child("Request").setValue(true) // you can't load email as name because Firebase can't load '@' char in their database
 
