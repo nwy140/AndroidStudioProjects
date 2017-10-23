@@ -221,7 +221,7 @@ class MainActivity : AppCompatActivity() {
     fun PlayerOnline(sessionID:String){
         this.sessionID=sessionID;
 
-        myRef.removeValue()
+        myRef.child("PlayerOnline").removeValue()
         myRef.child("PlayerOnline").child(sessionID)
                 .addValueEventListener(object :ValueEventListener{
                     override fun onDataChange(dataSnapshot: DataSnapshot?) {
