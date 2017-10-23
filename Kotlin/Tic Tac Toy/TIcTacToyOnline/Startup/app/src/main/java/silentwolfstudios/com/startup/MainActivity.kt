@@ -2,15 +2,20 @@ package silentwolfstudios.com.startup
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.renderscript.Sampler
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 import kotlinx.android.synthetic.main.activity_main.*
 import silentwolfstudios.com.startup.R
 import java.util.*
+import kotlin.collections.HashMap
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,6 +35,7 @@ private var mFirebaseAnalytics:FirebaseAnalytics?=null;
         var b:Bundle=intent.extras;
         myEmail=b.getString("email") // will get email, then send it to extras, and set the email to login email
                                             // so whenever you click request, you will add your email to database
+        IncomingCalls();
     }
 var winner=-1;
      fun buClick(view: View) {  // do not use protected ,it causes crash
@@ -192,14 +198,45 @@ var winner=-1;
 
     fun buRequestEvent(view: android.view.View){
         var userDemail=etEmail.text.toString();
-        myRef.child("Users").child(userDemail).child("Request").push().setValue(myEmail) //push means create node with random ID
+        myRef.child("Users").child(SplitString(userDemail)).child("Request").push().setValue(myEmail) //push means create node with random ID
 
     }
 
     fun buAcceptEvent(view: android.view.View){
         var userDemail=etEmail.text.toString();
+        myRef.child("Users").child(SplitString(userDemail)).child("Request").push().setValue(myEmail) //push means create node with random ID
 
+    }
 
+    fun IncomingCalls(){
+        myRef.child("Users").child(SplitString(myEmail!!)).child("Request")
+                .addValueEventListener(object :ValueEventListener{
+                    override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                        try{
+                            val td=dataSnapshot!!.value as HashMap<String,Any>
+                            if (td!=null){
+                                var value:String
+                                for (key in td.keys){
+                                    value=td[key] as String
+                                    etEmail.setText(value)
+
+                                    myRef.child("Users").child(SplitString(myEmail.toString())).child("Request").setValue(true) // you can't load email as name because Firebase can't load '@' char in their database
+
+                                    break
+                                }
+                            }
+                        }catch (ex:Exception){}
+                    }
+
+                    override fun onCancelled(p0: DatabaseError?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+                })
+    }
+
+    fun SplitString(str:String):String{
+        var split=str.split("@")
+        return split[0]
     }
 
 
