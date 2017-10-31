@@ -1,5 +1,6 @@
 package silentwolfstudios.com.startup
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -24,6 +25,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class Login : AppCompatActivity() {
@@ -32,6 +34,7 @@ class Login : AppCompatActivity() {
 
     private var database=FirebaseDatabase.getInstance();
     private var myRef=database.reference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +47,7 @@ class Login : AppCompatActivity() {
             //TODO SELECT IMAGE FROM PHONE
             checkPermission()
         })
+
     }
 
     fun LoginToFireaBase(email:String,password:String) {
@@ -130,9 +134,9 @@ val email:String=currentUser!!.email.toString()
     fun checkPermission(){
         if (Build.VERSION.SDK_INT>=23){
             if(ActivityCompat.checkSelfPermission(this,
-                    android.Manifest.permission.READ_EXTERNAL_STORAGE) !=
+                    Manifest.permission.READ_EXTERNAL_STORAGE) !=
                     PackageManager.PERMISSION_GRANTED){
-                requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),READIMAGE)
+                requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),READIMAGE)
                 return
             }
         }
@@ -157,7 +161,7 @@ val email:String=currentUser!!.email.toString()
     val PICK_IMAGE_CODE=123
     fun loadImage(){
         //TODO Load Image
-        var intent=Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        var intent=Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(intent,PICK_IMAGE_CODE ) //Activity expects result, OnAcitivtyResults will be called after activity
     }
 
