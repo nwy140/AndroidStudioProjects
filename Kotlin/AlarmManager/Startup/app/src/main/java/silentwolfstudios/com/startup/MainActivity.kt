@@ -11,6 +11,9 @@ class   MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val saveData=SaveData(applicationContext) //bug001
+
+        tvShowTime.text=saveData.getHour() .toString()+":"+ saveData.getMinute().toString()
 
     }
 
@@ -19,8 +22,10 @@ class   MainActivity : AppCompatActivity() {
         tvShowTime.text=Hours.toString()+":"+ Minute.toString()
 
         val saveData=SaveData(applicationContext) //bug001
-        saveData.setAlarm(Hours, Minute)
+        saveData.SaveData(Hours,Minute)
+        saveData.setAlarm()
     }
+
 
 
     fun BuSetTime(view: View){
