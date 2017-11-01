@@ -14,8 +14,17 @@ class   MainActivity : AppCompatActivity() {
 
     }
 
-    fun buSetTime(view: View){
+    fun SetTime(Hours:Int,Minutes:Int){
 
+        tvShowTime.text=Hours.toString()+":"+Minutes.toString()
+
+    }
+
+
+    fun BuSetTime(view: View){
+        val popTime=PopTime();
+        val fm=fragmentManager
+        popTime.show(fm,"Select time")
     }
 
 }

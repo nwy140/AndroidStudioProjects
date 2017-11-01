@@ -8,17 +8,18 @@
 
 
     <TextView
-        android:id="@+id/ivShowTime"
+        android:id="@+id/tvShowTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="116dp"
-        android:text="TextView"
+        android:layout_marginTop="164dp"
+        android:text="Time"
         android:textSize="22pt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.502" />
 
     <Button
         android:onClick="BuSetTime"
@@ -28,9 +29,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
-        android:text="Button"
+        android:text="set time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivShowTime" />
+        android:layout_marginTop="96dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvShowTime" />
 </android.support.constraint.ConstraintLayout>
