@@ -14,10 +14,12 @@ class   MainActivity : AppCompatActivity() {
 
     }
 
-    fun SetTime(Hours:Int,Minutes:Int){
+    fun SetTime(Hours:Int, Minute:Int){
 
-        tvShowTime.text=Hours.toString()+":"+Minutes.toString()
+        tvShowTime.text=Hours.toString()+":"+ Minute.toString()
 
+        val saveData=SaveData(applicationContext) //bug001
+        saveData.setAlarm(Hours, Minute)
     }
 
 
