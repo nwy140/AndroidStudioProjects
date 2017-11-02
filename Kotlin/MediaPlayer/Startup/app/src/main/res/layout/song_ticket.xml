@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Song Name"
-                android:textSize="27sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/tvAuthor"
