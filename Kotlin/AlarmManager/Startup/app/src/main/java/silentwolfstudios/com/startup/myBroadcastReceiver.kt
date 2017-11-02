@@ -12,8 +12,11 @@ class myBroadcastReceiver:BroadcastReceiver(){
             var b=intent.extras
 
             Toast.makeText(context,b.getString("message"),Toast.LENGTH_LONG).show()
+            var loopnotifyme:Boolean=true;
+
 val notifyme=Notifications();
-            notifyme.Notify(context!!,b.getString("message"),10)
+            while (loopnotifyme==true){notifyme.Notify(context!!,b.getString("message"),10)}
+
 
         }else if(intent!!.action.equals("android.intent.action.BOOT_COMPLETED")) { //system reset
             //TODO save time
