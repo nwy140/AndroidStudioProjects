@@ -34,6 +34,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun LoadURLOnline(){
+
+        ListSongs.add(SongInfo("Cycle","SteinsGate","http://66.90.93.122/ost/steins-gate-symphonic-reunion/vrioowfnnd/02-cycle.mp3"))
+        ListSongs.add(SongInfo("Laboratory","SteinsGate","http://66.90.93.122/ost/steins-gate-symphonic-reunion/dmjgwkqgtu/06-laboratory.mp3"))
+        ListSongs.add(SongInfo("Queit Air","SteinsGate","http://67.159.62.2/anime_ost/steins-gate-original-soundtrack/tejckcvbys/109%20Quiet%20air.mp3"))
+        ListSongs.add(SongInfo("Human Communities","SteinsGate","http://67.159.62.2/anime_ost/steins-gate-original-soundtrack/qfhhzxpzdp/203%20Human%20community.mp3"))
+        ListSongs.add(SongInfo("Select Of Sorrow","SteinsGate","http://67.159.62.2/anime_ost/steins-gate-original-soundtrack/zdtjuievdq/117%20Select%20of%20sorrow.mp3"))
+        ListSongs.add(SongInfo("Gate Of Steiner","SteinsGate","http://67.159.62.2/anime_ost/steins-gate-original-soundtrack/viwbnxdawh/103%20GATE%20OF%20STEINER%20-Main%20theme-.mp3"))
+
         ListSongs.add(SongInfo("Critical Drive","YokoShimomura","https://vocaroo.com/media_command.php?media=s1Cz7WMgL76d&command=download_mp3"))
 //        ListSongs.add(SongInfo("01 Drive","YokoShimomura","https://vocaroo.com/media_command.php?media=s1Cz7WMgL76d&command=download_mp3"))
 //        ListSongs.add(SongInfo("02 Critical Drive","YokoShimomura","https://vocaroo.com/media_command.php?media=s1Cz7WMgL76d&command=download_mp3"))
