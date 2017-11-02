@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@color/whitebackground"
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="silentwolfstudios.com.startup.MainActivity">
+
+
+    <ListView
+        android:layout_weight="1"
+        android:id="@+id/lsListSongs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <SeekBar
+        android:layout_weight="0"
+        android:id="@+id/sbProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!--if weight = 0 , it means it will always takes its original size-->
+
+</LinearLayout>
